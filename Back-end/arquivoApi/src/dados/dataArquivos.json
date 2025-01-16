@@ -1,0 +1,17 @@
+[
+  {
+    "idCategoriaArquivo": 1,
+    "nome": "Programas Linux",
+    "programas": []
+  },
+  {
+    "idCategoriaArquivo": 2,
+    "nome": "Programas Windows",
+    "programas": []
+  },
+  {
+    "idCategoriaArquivo": 3,
+    "nome": "Programas teste",
+    "programas": []
+  }
+]

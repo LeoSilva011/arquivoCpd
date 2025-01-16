@@ -1,0 +1,78 @@
+
+<div class="container_home">
+    <div class="home">
+
+        <div class="title">
+            <h1>Arquivos CPD</h1>
+        </div>
+        <div class="links">
+         
+            <div class="title_arquivos" >
+                <h2>Links</h2>
+                <button (click)="statusAddNovoLink()">+</button>
+            </div>
+            
+            <ul class="container_link" *ngFor="let link of links">
+                <li>
+                    <a class="link">{{link.nome}}</a>
+                    <button (click)="apagarLink(link.idLink)">Remover</button>
+                </li>
+
+            </ul>
+            <div class="input_novo_link" *ngIf="addNovoLink">
+                <input [(ngModel)]="nomeLink" type="text" placeholder="Nome">
+                <input [(ngModel)]="link" type="text" placeholder="Link">
+                <button (click)="adicionarLink()">OK</button>
+            </div>
+       
+        </div>
+    
+        <div class="isos">
+    
+    
+            <div class="title_arquivos">
+                <h2>ISOs</h2>
+                <button (click)="navigateToNovaIso(true)">add</button>
+            </div>
+
+            <ul class="container_iso">
+                <li href="iso "  class="iso"
+                    *ngFor="let iso of isos"
+                >
+                    <a  target = '_blank' href="{{iso.linkDownload}}">{{iso.nome}}</a>
+
+                </li>
+
+                
+            </ul>
+           
+    
+        </div>
+    
+        <div class="arquivos" *ngFor="let arquivo of arquivos">
+
+            <div class="title_arquivos">
+                <h2>{{arquivo.nome}}</h2>
+                <button (click)="navigateToNovoArquivo(false, arquivo.idCategoriaArquivo)">+</button>
+            </div>
+
+            <ul  class="arquivos_list">
+                <li *ngFor="let programa of arquivo.programas" >
+                    <app-item-arquivo
+                    [nome]="programa.nome"
+                    [urlImg]="programa.urlImg"
+                    [urlArquivo]="programa.urlArquivo"
+                    />
+                </li>
+
+                
+                
+                
+            </ul>
+    
+            
+        </div>
+    </div>
+
+</div>
+

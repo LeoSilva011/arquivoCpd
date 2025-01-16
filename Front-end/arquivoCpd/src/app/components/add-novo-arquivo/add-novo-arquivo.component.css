@@ -1,0 +1,29 @@
+.container_add-novo-arquivo{
+    display: flex;
+   justify-content: center;
+   margin-top: 5em;
+  
+   
+}
+
+.inputs-arquivo{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+
+
+.label-title{
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+
+.inputs-arquivo input{
+   margin-bottom: 2em;
+   padding: 10px;
+   
+}

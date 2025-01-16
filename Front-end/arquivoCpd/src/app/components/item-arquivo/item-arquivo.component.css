@@ -1,0 +1,42 @@
+.container_arquivo{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    border: 1px solid black;
+    display: flex;
+    width: 10em;
+
+    align-items: center;
+    position: relative
+    
+}
+.img-item img{
+    width: 6em;
+    height: 6em;
+}
+
+.title h2{
+ font-size: 20px;
+
+}
+
+.baixar_button{
+   margin: 1em;
+    
+}
+
+.baixar_button a{
+    background-color: rgb(30, 169, 233);
+    padding: 0.5em 1em;
+    color: aliceblue;
+    font-weight: bold;
+    border-radius: 5px;
+    
+
+}
+
+.butao-excluir{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}

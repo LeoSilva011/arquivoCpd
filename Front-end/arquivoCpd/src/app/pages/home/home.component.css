@@ -1,0 +1,99 @@
+
+.container_home{
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+.home{
+    
+    background-color: aquamarine;
+    padding: 1em;
+    width: 70%;
+    
+}
+
+.title h1{
+
+}
+
+.links{
+
+}
+
+
+
+.container_link li{
+    background-color: red;
+    border: 1px solid black;
+   
+   
+
+   display: flex;
+
+   
+}
+
+.container_link li:hover{
+ 
+   background-color: blue;
+}
+
+
+
+.link{
+    cursor: pointer;
+    font-size: 20px;
+    
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+
+}
+
+.container_iso{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.iso{
+    margin-left: 10px;
+    
+}
+
+.iso button{
+    padding: 0.5em 1em;
+}
+
+
+.title_arquivos{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.arquivos{
+    margin-top: 1em;
+}
+
+.arquivos_list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.arquivos_list li{
+   
+    margin-top: 1em;
+    margin-right: 1em;
+    
+}

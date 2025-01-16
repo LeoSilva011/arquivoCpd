@@ -1,0 +1,71 @@
+<div class="container_add-novo-arquivo">
+   
+   <div class="inputs-arquivo" *ngIf="!addIso">
+        <!-- <label class="label-title">Nome*</label>
+        <input 
+            [(ngModel)]="nome"
+            type="text" placeholder="Nome do Arquivo">
+
+        <label  class="label-title" for="">Imagem*</label>
+        <input 
+        [(ngModel)]="urlImg"
+            type="file" name="" id="">
+
+        <label  class="label-title" for="">Arquivo*</label>
+        <input 
+            [(ngModel)]="urlArquivo"
+            type="file" name="" id="" required>
+
+        <button (click)="enviarFormulario()">Salvar</button> -->
+
+        <h2>Salvar Programa</h2>
+<form (ngSubmit)="salvarPrograma()">
+  <div>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [(ngModel)]="nome" name="nome" required />
+  </div>
+
+
+  <div>
+    <label for="urlArquivo">Arquivo do Programa:</label>
+    <input type="file" id="urlArquivo" (change)="onArquivoSelected($event)" required />
+  </div>
+
+  <div>
+    <label for="urlImg">Imagem Associada:</label>
+    <input type="file" id="urlImg" (change)="onImgSelected($event)" required />
+  </div>
+
+  <button type="submit">Salvar Programa</button>
+</form>
+
+    </div>
+
+      
+    <div class="inputs-arquivo" *ngIf="addIso"  > 
+        <!-- <label class="label-title">Nome*</label>
+        <input type="text" [(ngModel)]="nomeIso" placeholder="Nome do Arquivo" required>
+    
+        <label  class="label-title" for="">ISO*</label>
+        <input type="file" (change)="onFileSelected($event)"  name="" id="" required>
+
+        <button (click)="salvarIso()" type="submit">Salvar</button> -->
+
+        <h2>Salvar Nova ISO</h2>
+        <form (ngSubmit)="salvarIso()">
+          <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" [(ngModel)]="nome" name="nome" required />
+          </div>
+        
+          <div>
+            <label for="isoFile">Arquivo ISO:</label>
+            <input type="file" id="isoFile" (change)="onFileSelected($event)" required />
+          </div>
+        
+          <button type="submit">Salvar</button>
+        </form>
+
+    </div>
+
+</div>
