@@ -20,6 +20,11 @@ export class DadosIsoService {
     return this.http.get(url);
   }
 
+  baixarIsoPeloId(id:number):Observable<any>{
+    const url = `${this.apiUrl}isos/${id}/download`;
+    return this.http.get<any>(url);
+  }
+
   /**
    * Salva uma nova ISO no servidor.
    * @param isoFile O arquivo ISO a ser enviado.

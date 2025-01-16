@@ -112,6 +112,18 @@ export class HomeComponent {
         }
       );
     }
+
+    async baixarIsoPeloID(id:number): Promise<void>{
+      this.dadosIsoService.baixarIsoPeloId(id).subscribe(
+        (dados) => {
+
+          console.log("baixando iso")
+        },
+        (erro) => {
+          console.error('Erro ao buscar categorias:', erro); // Tratamento de erros
+        }
+      );
+    }
     
 
     async buscarArquivosApi(): Promise<void>{

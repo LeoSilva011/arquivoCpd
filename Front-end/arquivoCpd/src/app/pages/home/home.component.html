@@ -14,7 +14,7 @@
             
             <ul class="container_link" *ngFor="let link of links">
                 <li>
-                    <a class="link">{{link.nome}}</a>
+                    <a class="link" href="{{link.link}}" target = '_blank'>{{link.nome}}</a>
                     <button (click)="apagarLink(link.idLink)">Remover</button>
                 </li>
 
@@ -39,7 +39,7 @@
                 <li href="iso "  class="iso"
                     *ngFor="let iso of isos"
                 >
-                    <a  target = '_blank' href="{{iso.linkDownload}}">{{iso.nome}}</a>
+                    <a  target = '_blank' href="http://localhost:3000/isos/{{iso.idIso}}/download">{{iso.nome}}</a>
 
                 </li>
 
