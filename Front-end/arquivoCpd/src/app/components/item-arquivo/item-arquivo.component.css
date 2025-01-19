@@ -1,22 +1,24 @@
 .container_arquivo{
     display: flex;
     flex-direction: column;
-    padding: 0.5em;
+    padding: 0.2em;
     border: 1px solid black;
     display: flex;
-    width: 10em;
+    width: 12em;
 
     align-items: center;
-    position: relative
+    position: relative;
+    border-radius: 5px;
     
 }
 .img-item img{
-    width: 6em;
-    height: 6em;
+    width: 7em;
+    height: 7em;
+    border-radius: 5px;
 }
 
 .title h2{
- font-size: 15px;
+ font-size: 18px;
 
 }
 
@@ -31,12 +33,28 @@
     color: aliceblue;
     font-weight: bold;
     border-radius: 5px;
+    text-decoration: none;
     
 
 }
+
+.baixar_button a:hover{
+    background-color: rgb(10, 108, 153);
+   
+    transition: 0.2s;
+
+}
+
 
 .butao-excluir{
     position: absolute;
     right: 5px;
     top: 5px;
+}
+
+
+.butao-excluir button{
+
+    cursor: pointer;
+  
 }

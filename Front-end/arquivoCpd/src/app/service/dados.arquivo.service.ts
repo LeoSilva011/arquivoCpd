@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DadosArquivoService {
 
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://10.139.0.15:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -47,6 +47,29 @@ export class DadosArquivoService {
     formData.append('urlImg', urlImg);                 // Adiciona a imagem
 
     return this.http.post<any>(url, formData);
+  }
+
+
+
+  deletarPeloId(idCategoria:number, idPrograma:number, senha:string | null):Observable<any>{
+    const url = `${this.apiUrl}categorias/${idCategoria}/programas/${idPrograma}`;
+
+    const headers = { 'Content-Type': 'application/json' };
+    const body = {senha}
+
+    return this.http.delete(url, { headers, body, responseType: 'text' });
+  }
+
+
+  async downloadImageAsFile(imageUrl: string): Promise<File> {
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+      throw new Error(`Erro ao baixar a imagem: ${response.statusText}`);
+    }
+
+    const blob = await response.blob();
+    const fileName = imageUrl.split('/').pop() || 'image.jpg';
+    return new File([blob], fileName, { type: blob.type });
   }
 
 }

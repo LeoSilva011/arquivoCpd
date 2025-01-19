@@ -7,6 +7,9 @@ const router = express.Router();
 // Caminho para o arquivo JSON
 const dataPath = "src/dados/dataArquivos.json";
 
+const HOST = "http://10.139.0.15:3000"
+
+
 // Função auxiliar para ler o arquivo JSON com fs.promises
 async function readData() {
   try {
@@ -132,8 +135,8 @@ router.post('/adicionar-programa', upload.fields([
       idArquivo: categoria.programas.length + 1,
       nome,
       idCategoriaArquivo: parseInt(idCategoriaArquivo),
-      urlArquivo: 'http://localhost:3000/uploads/programas/' + arquivos.urlArquivo[0].filename, //http://localhost:3000/ host da api. Mudar caso mude de host
-      urlImg: 'http://localhost:3000/uploads/imagens/' + arquivos.urlImg[0].filename
+      urlArquivo: `${HOST}/uploads/programas/` + arquivos.urlArquivo[0].filename, //http://localhost:3000/ host da api. Mudar caso mude de host
+      urlImg: `${HOST}/uploads/imagens/` + arquivos.urlImg[0].filename
     };
 
     // Adicionar o programa ao array de programas da categoria
@@ -152,21 +155,27 @@ router.post('/adicionar-programa', upload.fields([
 // Rota para apagar um programa pelo idArquivo
 router.delete('/:idCategoriaArquivo/programas/:idArquivo', async (req, res) => {
   const { idCategoriaArquivo, idArquivo } = req.params;
+  const { senha } = req.body;
 
   try {
+    // Verificar a senha
+    if (senha !== 'radeonrx580') {
+      return res.status(403).json({ message: 'Acesso negado! Senha inválida.' });
+    }
+
     // Ler os dados do arquivo JSON
     const categorias = await readData();
 
     // Encontrar a categoria pelo idCategoriaArquivo
     const categoria = categorias.find(cat => cat.idCategoriaArquivo === parseInt(idCategoriaArquivo));
     if (!categoria) {
-      return res.status(404).json({ message: "Categoria não encontrada!" });
+      return res.status(404).json({ message: 'Categoria não encontrada!' });
     }
 
     // Encontrar o índice do programa a ser removido
     const programaIndex = categoria.programas.findIndex(prog => prog.idArquivo === parseInt(idArquivo));
     if (programaIndex === -1) {
-      return res.status(404).json({ message: "Programa não encontrado!" });
+      return res.status(404).json({ message: 'Programa não encontrado!' });
     }
 
     // Obter os dados do programa para excluir os arquivos
@@ -179,13 +188,13 @@ router.delete('/:idCategoriaArquivo/programas/:idArquivo', async (req, res) => {
     const caminhoArquivo = path.join(__dirname, `../dados/uploads/programas/${programaRemovido.urlArquivo.split('/').pop()}`);
     const caminhoImagem = path.join(__dirname, `../dados/uploads/imagens/${programaRemovido.urlImg.split('/').pop()}`);
 
-    fs.unlinkSync(caminhoArquivo);  // Deleta o arquivo de programa
-    fs.unlinkSync(caminhoImagem);   // Deleta o arquivo de imagem
+    fs.unlinkSync(caminhoArquivo); // Deleta o arquivo de programa
+    fs.unlinkSync(caminhoImagem);  // Deleta o arquivo de imagem
 
     // Salvar os dados atualizados no arquivo JSON
     await writeData(categorias);
 
-    return res.status(200).json({ message: "Programa removido com sucesso!" });
+    return res.status(200).json({ message: 'Programa removido com sucesso!' });
   } catch (error) {
     console.error('Erro ao remover programa:', error);
     return res.status(500).json({ error: 'Erro interno do servidor.' });

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DadosIsoService {
 
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://10.139.0.15:3000/';
 
   constructor(private http: HttpClient) { }
 

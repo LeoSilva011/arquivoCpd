@@ -139,7 +139,14 @@ export class HomeComponent {
     }
 
     async apagarLink(idLink:number): Promise<void>{
-      this.dadosLinkService.deletePrograma(idLink).subscribe(
+
+      const userInput = prompt("Digite a senha:");
+      
+      
+
+      this.dadosLinkService.deletePrograma(idLink, userInput).subscribe(
+
+
         (response) => {
           // Agora, remova o link do array local
         this.links = this.links.filter(link => link.idLink !== idLink); // Remover o link do array local
@@ -147,7 +154,8 @@ export class HomeComponent {
           console.log('Programa excluído com sucesso:', response);
         },
         (error) => {
-          console.error('Erro ao excluir programa:', error);
+          console.error('Erro ao excluir programa:', error.error);
+          alert(error.error)
         }
       );
     }

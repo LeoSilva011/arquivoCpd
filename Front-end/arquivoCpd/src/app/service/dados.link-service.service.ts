@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DadosLinkService {
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://10.139.0.15:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -31,12 +31,14 @@ export class DadosLinkService {
     return this.http.post(url, dados, { headers, responseType: 'text' });
   }
 
-  deletePrograma(idLink: number): Observable<any> {
+  deletePrograma(idLink: number, senha:string | null): Observable<any> {
     const url = `${this.apiUrl}links/${idLink}`;
     // Configuração dos headers (se necessário)
     const headers = { 'Content-Type': 'application/json' };
+
+    const body = {senha}
   
-    return this.http.delete(url, { headers, responseType: 'text' });
+    return this.http.delete(url,  { headers,body, responseType: 'text' });
   }
 
 

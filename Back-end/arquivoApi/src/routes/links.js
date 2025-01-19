@@ -44,6 +44,12 @@ const addLink = (req, res) => {
 // Função para apagar um link pelo ID
 const deleteLinkById = (req, res) => {
   const { id } = req.params; // Obter o ID da URL
+  const { senha } = req.body; // Obter a senha do corpo da requisição
+
+  // Verificar a senha
+  if (senha !== 'radeonrx580') {
+    return res.status(403).send('Acesso negado! Senha inválida.');
+  }
 
   fs.readFile(dataFile, 'utf8', (err, data) => {
     if (err) {

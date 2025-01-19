@@ -8,6 +8,10 @@ import { log } from 'console';
 // Caminho para o arquivo JSON
 const dataFile = 'src/dados/dataIso.json';
 
+const HOST = "http://10.139.0.15:3000"
+
+
+
 // Configuração do multer para salvar o arquivo localmente
 const upload = multer({
   dest: 'src/dados/uploads/isos', // Diretório onde as ISOs serão salvas
@@ -21,7 +25,7 @@ const addIso = (req, res) => {
   }
 
   // Gera o link de download com a URL completa
-  const linkDownload = `http://localhost:3000/uploads/isos/${req.file.filename}`;
+  const linkDownload = `${HOST}/uploads/isos/${req.file.filename}`;
 
   const newIso = {
     idIso: null,
@@ -147,6 +151,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const deleteIsoById = (req, res) => {
   const { idIso } = req.params;
 
+
+ 
   fs.readFile(dataFile, 'utf8', (err, data) => {
     if (err) {
       console.error('Erro ao ler o arquivo de ISOs:', err);
@@ -166,7 +172,7 @@ const deleteIsoById = (req, res) => {
     // Converter a URL para o caminho físico no servidor
     const filePath = path.resolve(
       'src/dados/uploads/isos',
-      isoToDelete.linkDownload.replace('http://localhost:3000/uploads/isos/', '')
+      isoToDelete.linkDownload.replace(`${HOST}/uploads/isos/`, '')
     );
 
     // Verificar se o arquivo existe antes de tentar apagá-lo

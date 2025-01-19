@@ -12,15 +12,26 @@ import { DadosIsoService } from '../../service/dados.iso.service';
 })
 export class AddNovoArquivoComponent {
 
+
   constructor(private router: Router, private route: ActivatedRoute, private dadosArquivoService:DadosArquivoService,  private dadosIsoService:DadosIsoService){}
 
+
+  
   addIso:boolean = false
 
 
   urlArquivo!:File
   urlImg!:File
+  urlImgPredefinida!:File
   nome:string =""
   idCategoriaArquivo:string =""
+
+  imagens = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnRJ7EW6_fLI6RB1sDtzIAe09GD1JA4wWf7g&s',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEcHKkfZdeIoHbEOZNmq8nrFgkDNDxJfw2zgq8fiCSC_Obo5pRLysErT4JwYhYDyy8-wE&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_RmlVEBmWG69ljwh9gSbWsE-H8AH3zXfbA&s'
+  ];
+  selecionado: number | null = null;
 
 
   ngOnInit(){
@@ -38,6 +49,7 @@ export class AddNovoArquivoComponent {
   }
 
   onImgSelected(event: any): void {
+    this.selecionado = null;
     this.urlImg = event.target.files[0];
   }
 
@@ -82,5 +94,14 @@ export class AddNovoArquivoComponent {
       console.error('Arquivo e nome são obrigatórios.');
     }
   }
+
+
+  async imagemPreDefinida(url:string, index: number): Promise<void> {
+    
+      this.selecionado = index;
+      this.urlImg = await this.dadosArquivoService.downloadImageAsFile(url);
+
+  }
+  
 
 }

@@ -1,3 +1,17 @@
 [
- 
+  {
+    "idCategoriaArquivo": 1,
+    "nome": "ISOS",
+    "programas": []
+  },
+  {
+    "idCategoriaArquivo": 2,
+    "nome": "Arquivos Linux",
+    "programas": []
+  },
+  {
+    "idCategoriaArquivo": 3,
+    "nome": "Arquivos Windows",
+    "programas": []
+  }
 ]

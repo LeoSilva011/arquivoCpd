@@ -2,6 +2,7 @@
     display: flex;
    justify-content: center;
    margin-top: 5em;
+   background-color: white;
   
    
 }
@@ -13,6 +14,37 @@
     padding: 1em;
     border-radius: 5px;
 }
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.inputs label{
+    font-weight: bold;
+}
+
+.botao-salvar{
+    padding: 0.5em 1em;
+    font-weight: bold;
+    background-color: rgb(30, 169, 233);
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+   
+
+.botao-salvar:hover{
+    background-color: rgb(10, 108, 153);
+   
+    transition: 0.2s;
+
+}
+
+
+
+
 
 
 
@@ -27,3 +59,33 @@
    padding: 10px;
    
 }
+
+.img-pre-definida{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.img-pre-definida a{
+    width: 5em;
+    height: 5em;
+    margin-left: 10px;
+    
+}
+
+.img-pre-definida img{
+    
+    width: 100%;
+    height: 5em;
+    border: 1px solid black;
+    cursor: pointer;
+    
+   
+}
+
+
+  .img-pre-definida a.active {
+    border: 3px solid green; /* Borda verde ao selecionar */
+  }
+
+ 

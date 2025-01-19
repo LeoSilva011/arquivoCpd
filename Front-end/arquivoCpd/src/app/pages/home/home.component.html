@@ -3,7 +3,7 @@
     <div class="home">
 
         <div class="title">
-            <h1>Arquivos CPD</h1>
+            <h1>Arquivos</h1>
         </div>
         <div class="links">
          
@@ -15,19 +15,20 @@
             <ul class="container_link" *ngFor="let link of links">
                 <li>
                     <a class="link" href="{{link.link}}" target = '_blank'>{{link.nome}}</a>
-                    <button (click)="apagarLink(link.idLink)">Remover</button>
+                    <button (click)="apagarLink(link.idLink)"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABCElEQVR4nNWUMWoCYRCFv8Y0YpMcIQYEsQy5gR5BrRKEgOIJTE4Qj6AB0+sRNDfIFgGx0/QKpkgwRWDDwissFGd+s5AMPNjie292dv/54Y9UVkqlCsArMANKvx1+A3wCsfQB3AJtIAIGoZMlpqet4IEU79AUKFqDz/aExA6dHmqyPiL83TJFJPjSOrbYxPNigUeCq44GNXmGFrgruONocCfPgwVuCe45GvTlaVrgiuCxo8FEnrIFvhA8dzRYyHNugTPAt3Ti5JNnU73pjfIpTcyz45tWAv4Zj45T0Qo4ddw7znU3YG+oOzZzFLD5XMkUpXR3kQO+HLfoRh5XNYCVIXwJXHvD/0/9AMpTfTUFSV+XAAAAAElFTkSuQmCC" alt="full-trash"></button>
                 </li>
 
             </ul>
             <div class="input_novo_link" *ngIf="addNovoLink">
                 <input [(ngModel)]="nomeLink" type="text" placeholder="Nome">
                 <input [(ngModel)]="link" type="text" placeholder="Link">
-                <button (click)="adicionarLink()">OK</button>
+                <button (click)="adicionarLink()">ADD</button>
+                <button (click)="statusAddNovoLink()">Cancelar</button>
             </div>
        
         </div>
     
-        <div class="isos">
+        <!-- <div class="isos">
     
     
             <div class="title_arquivos">
@@ -40,6 +41,9 @@
                     *ngFor="let iso of isos"
                 >
                     <a  target = '_blank' href="http://localhost:3000/isos/{{iso.idIso}}/download">{{iso.nome}}</a>
+                    <button
+                     
+                ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABCElEQVR4nNWUMWoCYRCFv8Y0YpMcIQYEsQy5gR5BrRKEgOIJTE4Qj6AB0+sRNDfIFgGx0/QKpkgwRWDDwissFGd+s5AMPNjie292dv/54Y9UVkqlCsArMANKvx1+A3wCsfQB3AJtIAIGoZMlpqet4IEU79AUKFqDz/aExA6dHmqyPiL83TJFJPjSOrbYxPNigUeCq44GNXmGFrgruONocCfPgwVuCe45GvTlaVrgiuCxo8FEnrIFvhA8dzRYyHNugTPAt3Ti5JNnU73pjfIpTcyz45tWAv4Zj45T0Qo4ddw7znU3YG+oOzZzFLD5XMkUpXR3kQO+HLfoRh5XNYCVIXwJXHvD/0/9AMpTfTUFSV+XAAAAAElFTkSuQmCC" alt="full-trash"></button>
 
                 </li>
 
@@ -47,7 +51,8 @@
             </ul>
            
     
-        </div>
+        </div> -->
+        
     
         <div class="arquivos" *ngFor="let arquivo of arquivos">
 
@@ -62,6 +67,8 @@
                     [nome]="programa.nome"
                     [urlImg]="programa.urlImg"
                     [urlArquivo]="programa.urlArquivo"
+                    [idCategoria]="arquivo.idCategoriaArquivo"
+                    [idPrograma]="programa.idArquivo"
                     />
                 </li>
 
@@ -69,10 +76,26 @@
                 
                 
             </ul>
+            
     
             
         </div>
     </div>
 
 </div>
+<!-- <div  
+    style="position: relative;
+    width: 100%;
+    height: 100%;"
+>
 
+
+    <app-add-novo-arquivo
+    
+        style="position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        "
+    ></app-add-novo-arquivo>
+</div> -->
